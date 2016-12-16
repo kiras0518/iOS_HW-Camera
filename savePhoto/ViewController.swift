@@ -10,6 +10,9 @@ import UIKit
 
 class ViewController: UIViewController,UIImagePickerControllerDelegate,UINavigationControllerDelegate {
     
+    
+    
+    
     //拍照
     @IBAction func takePhoto(_ sender: Any) {
         let imagePicker = UIImagePickerController()
@@ -17,7 +20,15 @@ class ViewController: UIViewController,UIImagePickerControllerDelegate,UINavigat
         imagePicker.delegate = self
         self.present(imagePicker, animated: true, completion: nil)
     }
-    //取得照片
+    
+    @IBAction func choosePhoto(_ sender: Any) {
+        let imagePicker = UIImagePickerController()
+        imagePicker.sourceType = .photoLibrary
+        imagePicker.delegate = self
+        self.present(imagePicker, animated: true, completion: nil)
+    }
+    
+    //取得照片存到手機相簿
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         print("info \(info)")
         let image = info[UIImagePickerControllerOriginalImage] as! UIImage
